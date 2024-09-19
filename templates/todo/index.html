@@ -39,7 +39,7 @@
         </p>
 
         <div class="task-actions">
-          <a href="#" class="btn btn-sm btn-secondary">Update</a>
+          <a href="{% url "todo:task-update" pk=task.id %}" class="btn btn-sm btn-secondary">Update</a>
           <a href="#" class="btn btn-sm btn-danger">Delete</a>
         </div>
       </div>
