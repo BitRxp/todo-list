@@ -1,0 +1,75 @@
+/* Task list styling */
+.task-container {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+
+/* Align the task header */
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Align task content and status inline */
+.task-content-status {
+    display: inline-flex;
+    align-items: center;
+}
+
+.task-content-status h3 {
+    margin-right: 10px;
+}
+
+/* Task info styling */
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Task status styling */
+.task-status {
+    font-weight: bold;
+}
+
+.task-status.not-done {
+    color: red;
+}
+
+.task-status.done {
+    color: green;
+}
+
+/* Adjust task actions */
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Styling for tags */
+.task-tags {
+    margin-top: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Add task button */
+.link-to-page {
+    float: right;
+}
+
+/* Pagination styling */
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Adjust header margins */
+.head {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

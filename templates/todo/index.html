@@ -1,15 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    TODO list
+  <h1 class="head">
+    TODO list:
     <a href="#" class="btn btn-primary link-to-page">
       Add task
     </a>
   </h1>
-  {% if car_list %}
-    
+
+  {% if task_list %}
+    {% for task in task_list %}
+      <div class="task-container">
+        <div class="task-header">
+          <div class="task-content-status">
+            <h3>{{ task.content }}</h3>
+            <span class="task-status {% if task.done %}done{% else %}not-done{% endif %}">
+              {% if task.done %}Done{% else %}Not done{% endif %}
+            </span>
+          </div>
+          <div class="task-complete-btn">
+            <a href="#" class="btn btn-sm {% if task.done %}btn-secondary{% else %}btn-success{% endif %}">
+              {% if task.done %}Undo{% else %}Complete{% endif %}
+            </a>
+          </div>
+        </div>
+
+        <p>Created: {{ task.created_at|date:"F d, Y, P" }}
+        {% if task.deadline %}
+          , Deadline: {{ task.deadline|date:"F d, Y, P" }}
+        {% endif %}
+        </p>
+
+        <p class="task-tags">
+          Tags: 
+          {% for tag in task.tags.all %}
+            {{ tag.name }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+
+        <div class="task-actions">
+          <a href="#" class="btn btn-sm btn-secondary">Update</a>
+          <a href="#" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
   {% else %}
-    <p>There are no tasks in todo</p>
+    <p>There are no tasks in the todo list</p>
   {% endif %}
 {% endblock %}
