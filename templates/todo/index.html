@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    TODO list
+    <a href="#" class="btn btn-primary link-to-page">
+      Add task
+    </a>
+  </h1>
+  {% if car_list %}
+    
+  {% else %}
+    <p>There are no tasks in todo</p>
+  {% endif %}
+{% endblock %}
