@@ -19,24 +19,26 @@
             </span>
           </div>
           <div class="task-complete-btn">
-            <a href="#" class="btn btn-sm {% if task.done %}btn-secondary{% else %}btn-success{% endif %}">
-              {% if task.done %}Undo{% else %}Complete{% endif %}
-            </a>
+            <form method="post" action="{% url "todo:task-toggle" pk=task.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm {% if task.done %}btn-secondary{% else %}btn-success{% endif %}">
+                {% if task.done %}Undo{% else %}Complete{% endif %}
+              </button>
+            </form>
           </div>
         </div>
 
         <p>Created: {{ task.created_at|date:"F d, Y, P" }}
           {% if task.deadline %}
-            , Deadline: 
+            , Deadline:
             <span class="{% if task.deadline < current_date %}text-danger{% else %}text-success{% endif %}">
               {{ task.deadline|date:"F d, Y, P" }}
             </span>
           {% endif %}
         </p>
 
-
         <p class="task-tags">
-          Tags: 
+          Tags:
           {% for tag in task.tags.all %}
             {{ tag.name }}{% if not forloop.last %}, {% endif %}
           {% endfor %}

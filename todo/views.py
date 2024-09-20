@@ -1,9 +1,16 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
+from django.shortcuts import get_object_or_404, redirect
 
 from todo.forms import TaskForm
 from todo.models import Task
+
+
+def toggle_task_status(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.toggle_status()
+    return redirect("todo:index")
 
 
 class IndexView(generic.ListView):

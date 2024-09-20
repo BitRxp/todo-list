@@ -23,3 +23,7 @@ class Task(models.Model):
 
     class Meta:
         ordering = ["done"]
+
+    def toggle_status(self):
+        self.done = not self.done
+        self.save()
