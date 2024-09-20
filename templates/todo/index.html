@@ -26,10 +26,14 @@
         </div>
 
         <p>Created: {{ task.created_at|date:"F d, Y, P" }}
-        {% if task.deadline %}
-          , Deadline: {{ task.deadline|date:"F d, Y, P" }}
-        {% endif %}
+          {% if task.deadline %}
+            , Deadline: 
+            <span class="{% if task.deadline < current_date %}text-danger{% else %}text-success{% endif %}">
+              {{ task.deadline|date:"F d, Y, P" }}
+            </span>
+          {% endif %}
         </p>
+
 
         <p class="task-tags">
           Tags: 
@@ -40,7 +44,7 @@
 
         <div class="task-actions">
           <a href="{% url "todo:task-update" pk=task.id %}" class="btn btn-sm btn-secondary">Update</a>
-          <a href="#" class="btn btn-sm btn-danger">Delete</a>
+          <a href="{% url "todo:task-delete" pk=task.id %}" class="btn btn-sm btn-danger">Delete</a>
         </div>
       </div>
     {% endfor %}
